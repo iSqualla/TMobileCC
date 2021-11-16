@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.tmobile.model.Repository
+import com.example.tmobile.model.response.CardsItem
 import com.example.tmobile.model.response.Page
 import com.example.tmobile.model.response.PageResponse
 import com.example.tmobile.network.NetworkHelper
@@ -16,18 +17,20 @@ class PageViewModel(
     private val networkHelper: NetworkHelper
 ) : ViewModel() {
 
-    private val _pages = MutableLiveData<Response<PageResponse>>()
-    val pages: LiveData<Response<PageResponse>>
+    private val _pages = MutableLiveData<List<CardsItem>>()
+    val pages: LiveData<List<CardsItem>>
         get() = _pages
 
     init {
         fetchPages()
     }
 
-    fun fetchPages() {
+    fun fetchPages(){
         viewModelScope.launch {
             repo.getPages().let {
-                _pages.postValue(it)
+                var response = it.body() as PageResponse
+
+                _pages.postValue(response.page?.cards as List<CardsItem>?)
             }
         }
     }

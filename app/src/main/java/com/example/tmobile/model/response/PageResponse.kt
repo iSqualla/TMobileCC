@@ -91,3 +91,9 @@ data class Title(
 	@Json(name="value")
 	val value: String? = null
 )
+
+enum class CardTypes(val value: String) {
+	TEXT("text"),
+	TITLE_DESCRIPTION("title_description"),
+	IMAGE_TITLE("image_title_description")
+}
