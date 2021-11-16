@@ -2,6 +2,12 @@ package com.example.tmobile.model.response
 
 import com.squareup.moshi.Json
 
+
+/*******
+ * Response Mapping
+ ******/
+
+
 data class PageResponse(
 
 	@Json(name="page")

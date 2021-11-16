@@ -21,10 +21,12 @@ class PageViewModel(
     val pages: LiveData<List<CardsItem>>
         get() = _pages
 
+    //makes a call as soon as viewmodel is required to start the process sooner
     init {
         fetchPages()
     }
 
+    //fetches the List of items that will populate the view
     fun fetchPages(){
         viewModelScope.launch {
             repo.getPages().let {

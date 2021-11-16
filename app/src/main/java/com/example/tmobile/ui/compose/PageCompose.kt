@@ -19,13 +19,22 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.rememberImagePainter
+import com.example.tmobile.R
 import com.example.tmobile.model.response.*
 
 private const val TAG = "Compose"
 
+
+/*******
+ *JetPack Compose TODOS:
+ * Link it to Main Activity
+ *
+ * Display Hierarchy
+ * Dynamic Value Population
+ ******/
+
 class PageCompose {
-
-
 
     @ExperimentalUnitApi
     @Composable
@@ -109,16 +118,16 @@ class PageCompose {
             shape = RoundedCornerShape(8.dp),
             elevation = 15.dp
         ) {
-            //picasso|glide
-//        Image(
-//            painter = rememberImagePainter(data = cardImage.url,
-//                builder = {
-//                    crossfade(true)
-//                }),
-//            contentDescription = stringResource(id = R.string.image_description),
-//            Modifier.size(cardImage.size?.width!!.dp)//, height = cardImage.size.height.dp)
-//        )
-//        ViewCardTitleDescription(cardTitle = cardTitle, cardDescription = cardDescription)
+
+            Image(
+                painter = rememberImagePainter(data = cardImage.url,
+                    builder = {
+                        crossfade(true)
+                    }),
+                contentDescription = stringResource(id = R.string.image_description),
+                Modifier.size(cardImage.size?.width!!.dp)//, height = cardImage.size.height.dp)
+            )
+            ViewCardTitleDescription(cardTitle = cardTitle, cardDescription = cardDescription)
         }
     }
 }

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TMobile</string>
+    <string name="image_description">Some image</string>
 </resources>

@@ -15,6 +15,13 @@ import com.example.tmobile.ui.theme.TMobileTheme
 import com.example.tmobile.ui.viewmodel.PageViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
+/*******
+ * TODOS:
+ * Display Compose
+ * essentially ran out of time for this, modeled how I need to display the responses and their subtypes
+ * But Loading the list itself needs a bit more debugging and development
+ ******/
+
 class MainActivity : ComponentActivity() {
 
     private val pageViewModel: PageViewModel by viewModel()
@@ -27,8 +34,23 @@ class MainActivity : ComponentActivity() {
             setContent {
                 TMobileTheme {
                     composer.ListCards(it)
+                    Greeting("I'M TMOBILE CODE CHALLENGE!! ")
                 }
             }
         })
+    }
+}
+
+
+@Composable
+fun Greeting(name: String) {
+    Text(text = "Hello $name!")
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview() {
+    TMobileTheme {
+        Greeting("Android")
     }
 }
